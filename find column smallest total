@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <conio.h>
+#define MAXC 100
+void NhapMaTran(int a[][MAXC], int &m, int &n)
+{
+	printf("Nhap so dong, so cot cua ma tran: ");
+	scanf("%d%d", &m, &n);
+
+	int i, j;
+	for (i=0; i<m; i++)
+		for (j=0; j<n; j++)
+		{
+			printf("Nhap a[%d][%d]: ", i, j);
+			scanf("%d", &a[i][j]);
+		}
+}
+
+void XuatMaTran(int a[][MAXC], int m, int n)
+{
+	int i, j;
+	for (i=0; i<m; i++)
+	{
+		for (j=0; j<n; j++)
+			printf("%d  ", a[i][j]);
+		printf("\n");
+	}
+}
+
+void CotTongNhoNhat(int a[][MAXC], int m, int n)
+{
+	int b[MAXC],i,j,min;
+	
+	for(i=0;i<n;i++)
+	{
+		int tongcot=0;
+		for(j=0;j<m;j++)	
+			tongcot=tongcot+a[j][i];
+		b[i]=tongcot;	
+	}
+	min=b[0];
+	for(i=1;i<n;i++)
+	{
+		if(min>b[i])
+			min=b[i];
+	}
+	printf("Cot co tong nho nhat co gia tri la %d tai vi tri: ",min);
+	for(i=0;i<n;i++)
+	{
+		if(min==b[i])
+			printf("%d ",i);					
+			
+	}	
+			
+}
+
+int main()
+{
+	int a[100][100];
+	int n,m,cot;
+	NhapMaTran(a,m,n);
+	XuatMaTran(a,m,n);
+	CotTongNhoNhat(a,m,n);		
+	getch();
+}
