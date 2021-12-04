@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+ 
+ 
+struct SinhVien{
+    char hoten[100];
+    int kv,nh;
+    float tongdiem;
+};
+ 
+typedef SinhVien SV;
+ 
+void nhap(SV &sv);
+void nhapN(SV a[], int n);
+void xuat(SV sv);
+void xuatN(SV a[], int n);
+void tinhDTB(SV &sv);
+void sapxep(SV a[], int n);
+void xeploai(SV a);
+void xeploaiN(SV a[], int n);
+void xuatFile(SV a[], int n, char fileName[]);
+int check(SV *sv);
+ 
+int main(){
+    int key;
+    int n;
+    do{
+        printf("\nNhap so luong SV: "); scanf("%d", &n);
+    }while(n <= 0);
+    SV a[n];
+        nhapN(a,n);
+        sapxep(a, n);
+        printf("Danh sach sap xep theo tong diem giam dan");
+        xuatN(a, n);
+        
+        
+}
+
+
+ 
+void nhap(SV &sv){
+    printf("\nNhap ho va ten: "); fflush(stdin); gets(sv.hoten);
+    printf("\nNhap khu vuc: "); scanf("%d", &sv.kv);
+    printf("\nNhap nhom: "); scanf("%d", &sv.nh);
+    printf("\nNhap tong diem: "); scanf("%f", &sv.tongdiem);
+}
+ 
+void nhapN(SV a[], int n){
+    printf("\n____________________________________\n");
+    for(int i = 0; i< n; ++i){
+        printf("\nNhap SV thu %d:", i+1);
+        nhap(a[i]);
+    }
+    printf("\n____________________________________\n");
+}
+ 
+void xuat(SV sv){
+    printf("\nHo ten SV: %s", sv.hoten);
+    printf("\nKhu vuc SV  : %d", sv.kv);
+    printf("\nKhu vuc SV  : %d", sv.nh);
+    printf("\nTong diem: %.2f\n", sv.tongdiem);
+    check(&sv);
+    printf("\n");
+}
+ 
+void xuatN(SV a[], int n){
+    printf("\n____________________________________\n");
+    for(int i = 0;i < n;++i){
+        printf("\nThong tin SV thu %d:", i+1);
+        xuat(a[i]);
+    }
+    printf("\n____________________________________\n");
+}
+
+int check(SV *sv)
+{
+	if(sv->kv == 1)
+	{
+		if(sv->nh == 1)
+		{
+			if(sv->tongdiem >= 18)
+			{
+				printf("thi sinh dau");
+			}else 
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 2)
+		{
+			if(sv->tongdiem >= 17.5)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 3)
+			if(sv->tongdiem >= 17)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");
+		
+	}
+	else if(sv->kv == 2)
+	{
+		if(sv->nh == 1)
+		{
+			if(sv->tongdiem >= 17)
+			{
+				printf("thi sinh dau");
+			}else 
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 2)
+		{
+			if(sv->tongdiem >= 16.5)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 3)
+			if(sv->tongdiem >= 16)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");	
+	}
+	else if(sv->kv == 3)
+	{
+		if(sv->nh == 1)
+		{
+			if(sv->tongdiem >= 16)
+			{
+				printf("thi sinh dau");
+			}else 
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 2)
+		{
+			if(sv->tongdiem >= 15.5)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");
+		}
+		else if(sv->nh == 3)
+			if(sv->tongdiem >= 15)
+			{
+				printf("thi sinh dau");
+			}else
+				printf("thi sinh rot");	
+	}
+}
+ 
+void sapxep(SV a[], int n){
+    SV tmp;
+    for(int i = 0;i < n;++i){
+        for(int j = i+1; j < n;++j){
+            if(a[i].tongdiem < a[j].tongdiem){
+                tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+        }
+    }
+}
+ 
+
+ 
