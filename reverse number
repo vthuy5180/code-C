@@ -1,15 +1,20 @@
-#include <stdio.h>
-#include <conio.h>
-int main()
-{
-    int n,a,b,c,ld,m;
-    printf("Nhap mot so 3 chu so = ");
-    scanf("%3d",&n);
-    a = int(n/100);
-    ld = n % 100;
-    b = int(ld/10);
-    c = ld%10;
-    m = c*100+b*10+a;
-    printf("So dao nguoc = %d",m);
+int reverse_num(int n){ 
+  int reverse = 0; 
+  while (n > 0) {
+    reverse = reverse * 10 + n % 10;
+    n /= 10;
+  }
+  return reverse;
+}
+
+int main(void){
+    int n;
+ 
+    printf(">> nhap mot so nguyen duong: ");
+    scanf("%d",&n);
+
+    int result = reverse_num(n);
+    printf("So dao nguoc: %d\n",result );
+
     return 0;
 }
