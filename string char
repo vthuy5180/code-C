@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include <string.h>
+int demsotu(char s[], int length)
+{
+    int word = (s[0] != ' ');
+    for (int i = 0; i < length - 1; i++)
+    {
+        if (s[i] == ' ' && s[i + 1] != ' ')
+        {
+            word++;
+        }
+    }
+    return word;
+}
+
+void daonguoc(char s[]) {
+  int lo = 0;
+  int length;
+  for (length = 0; s[length] != '\0' ; length++) {} 
+  while ( lo < length ) {
+    --length;
+    char tmp = s[lo];
+    s[lo] = s[length];	
+    s[length] = tmp;
+    ++lo;
+  }
+}
+
+int kthoa(char s[])
+{
+    int i=0,dem=0;
+    while (s[i]!='\0')
+    {
+    	if (s[i]>='A'&&s[i]<='Z') dem++;
+		i++;
+    }
+    return dem;
+}
+
+int ktthuong(char s[])
+{
+    int i=0,dem=0;
+    while (s[i]!='\0')
+    {
+    	if (s[i]>='a'&&s[i]<='z') dem++;
+		i++;
+    }
+    return dem;
+}
+
+
+
+int main()
+{
+	char s[200];
+	printf("Nhap chuoi: ");
+	fgets(s, sizeof s, stdin);
+	int length = strlen(s) - 1; 
+    s[length] = '\0';
+	printf("So tu cua chuoi la: %d", demsotu(s, length));
+	daonguoc(s);
+	printf("\nChuoi viet nguoc: %s", s);
+	printf("\nSo ky tu hoa la : %d",kthoa(s));
+	printf("\nSo ky tu thuong la : %d",ktthuong(s));
+
+}
